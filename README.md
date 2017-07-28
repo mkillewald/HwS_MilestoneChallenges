@@ -1,5 +1,6 @@
 # HwS_MilestoneChallenges
-Hacking With Swift Milestone Challenges
+
+My solutions to the eleven milestone challenges from the companion guide book for "Hacking With Swift" by Paul Hudson 
 
 ### Milestone 1: Fizz Buzz
 
