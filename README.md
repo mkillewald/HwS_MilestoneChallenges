@@ -29,10 +29,38 @@ a letter that it’s in the word, e.g. H, it gets revealed to make “?H??H?”;
 letter, they inch closer to death. If they seven incorrect answers they lose, but if they manage to 
 spell the full word before that they win.
 
-### Milestone 5: 
-### Milestone 6: 
-### Milestone 7: 
-### Milestone 8: 
-### Milestone 9: 
-### Milestone 10: 
-### Milestone 11: 
+### Milestone 5: Storm Viewer with UICollectionView
+
+Re-make project 1, Storm Viewer, using a UICollectionViewController as seen in project 10
+
+### Milestone 6: Country Facts
+
+Make an app that contains facts about countries: show a list of country names in a table view, 
+then when one is tapped bring in a new screen that contains its capital city, size, population, 
+currency, and any other facts that interest you. The type of facts you include is down to you.
+
+### Milestone 7: Notes clone
+
+Recreate the iOS Notes app. I suggest you follow the iPhone version, because it’s fairly simple: a navigation controller, a table view controller, and a detail view controller with a full-screen text view.
+
+### Milestone 8: Shooting Gallery
+
+Make a shooting gallery game using SpriteKit: create three rows on the screen, then have targets slide across from one side to the other. If the user taps a target, make it fade out and award them points.
+
+### Milestone 9: Swift Extensions
+
+Implement five Swift language extensions 
+
+1. Extend the Integer protocol with an isEven() method that returns true if a number is even and false if it’s odd.  
+2. Extend String with a length property that returns the number of characters it has.  
+3. Extend UIView so that it has a bounceOut(duration:) method that uses animation to scale its size down to 0.0001 over a specified number of seconds.  
+4. Extend Array so that it has a mutating shuffle() method that wraps the arrayByShufflingObjects(in:) method from GameplayKit more neatly. You should use the typecast as! Array to have Swift automatically substitute the actual array type.  
+5. Extend Array so that it has a mutating remove(item:) method. Tip: you will need to add the Comparable constraint to make this work!  
+
+### Milestone 10: Rainbow
+
+Extend the Core Graphics drawing sandbox from project 26 to add a new method: drawRainbow(). Yes, that should do pretty much what you might imagine: you’ll need to draw concentric rings of colors centered on the bottom of the image so that users see rainbow-like arcs.
+
+### Milestone 11: Private Photos
+
+Create a private photos app – think Mission Impossible, or at least as close as you can get to it in a programming tutorial! The Notes app for iOS has the ability to lock certain notes so that Touch ID must be used to reveal the note, and your mission is to create something similar for a photo library.
