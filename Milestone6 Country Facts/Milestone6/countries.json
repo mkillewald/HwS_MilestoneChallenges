@@ -1,0 +1,166 @@
+{
+    "metadata":{
+        "responseInfo":{
+            "status":200,
+            "developerMessage":"OK"
+        }
+    },
+    "results":[
+               {
+               "name":"Estonia",
+               "capital":"Tallinn",
+               "officialLanguage":"Estonian",
+               "currency":"Euro",
+               "gdp":17891,
+               "population":1315635,
+               "area":45336,
+               "waterPercent":4.45,
+               "timezone":"UTC+2 / UTC+3",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/Estonia"
+               },
+               {
+               "name":"France",
+               "capital":"Paris",
+               "officialLanguage":"French",
+               "currency":"Euro and Franc",
+               "gdp":37294,
+               "population":66991000,
+               "area":643801,
+               "waterPercent":0,
+               "timezone":"UTC+1 / UTC+2",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/France"
+               },
+               {
+               "name":"Germany",
+               "capital":"Berlin",
+               "officialLanguage":"German",
+               "currency":"Euro",
+               "gdp":41902,
+               "population":82175700,
+               "area":357168,
+               "waterPercent":0,
+               "timezone":"UTC+1 / UTC+2",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/Germany"
+               },
+               {
+               "name":"Ireland",
+               "capital":"Dublin",
+               "officialLanguage":"Irish Gaelic and English",
+               "currency":"Euro",
+               "gdp":61606,
+               "population":4752085,
+               "area":84421,
+               "waterPercent":0,
+               "timezone":"GMT (UTC)",
+               "drivesOn":"left",
+               "wikiLink":"https://en.wikipedia.org/wiki/Ireland"
+               },
+               {
+               "name":"Italy",
+               "capital":"Rome",
+               "officialLanguage":"Italian",
+               "currency":"Euro",
+               "gdp":30507,
+               "population":60599936,
+               "area":301338,
+               "waterPercent":2.4,
+               "timezone":"UTC+1 / UTC+2",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/Italy"
+               },
+               {
+               "name":"Monaco",
+               "capital":"Monaco",
+               "officialLanguage":"French",
+               "currency":"Euro",
+               "gdp":187649,
+               "population":38400,
+               "area":37308,
+               "waterPercent":0,
+               "timezone":"UTC+1 / UTC+2",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/Monaco"
+               },
+               {
+               "name":"Nigeria",
+               "capital":"Abuja",
+               "officialLanguage":"English",
+               "currency":"Naira",
+               "gdp":2123,
+               "population":188462640,
+               "area":923768,
+               "waterPercent":1.4,
+               "timezone":"UTC+1",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/Nigeria"
+               },
+               {
+               "name":"Poland",
+               "capital":"Warsaw",
+               "officialLanguage":"Polish",
+               "currency":"Polish złoty",
+               "gdp":12722,
+               "population":38634007,
+               "area":312679,
+               "waterPercent":3.07,
+               "timezone":"UTC+1 / UTC+2",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/Poland"
+               },
+               {
+               "name":"Russia",
+               "capital":"Moscow",
+               "officialLanguage":"Russian",
+               "currency":"Russian ruble",
+               "gdp":10885,
+               "population":114463451,
+               "area":17075200,
+               "waterPercent":13,
+               "timezone":"UTC+2 to +12",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/Russia"
+               },
+               {
+               "name":"Spain",
+               "capital":"Madrid",
+               "officialLanguage":"Spanish",
+               "currency":"Euro",
+               "gdp":26643,
+               "population":46468102,
+               "area":505990,
+               "waterPercent":1.04,
+               "timezone":"UTC to +1 / UTC+1 to +2",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/Spain"
+               },
+               {
+               "name":"UK",
+               "capital":"London",
+               "officialLanguage":"English",
+               "currency":"Pound sterling",
+               "gdp":43902,
+               "population":65648000,
+               "area":242495,
+               "waterPercent":1.34,
+               "timezone":"UTC / UTC+1",
+               "drivesOn":"left",
+               "wikiLink":"https://en.wikipedia.org/wiki/United_Kingdom"
+               },
+               {
+               "name":"US",
+               "capital":"Washington D.C.",
+               "officialLanguage":"None",
+               "currency":"US Dollar",
+               "gdp":57467,
+               "population":323127513,
+               "area":9833520,
+               "waterPercent":6.97,
+               "timezone":"UTC-4 to -12, +10, +11 / UTC-4 to -10",
+               "drivesOn":"right",
+               "wikiLink":"https://en.wikipedia.org/wiki/United_States"
+               }
+               ]
+}
