@@ -41,8 +41,7 @@ class ViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Country", for: indexPath)
         let country = countries[indexPath.row]
         
-        // probably should test here to determine if the image exists
-        cell.imageView?.image = UIImage(named: (country.name.lowercased()))
+        cell.imageView?.image = UIImage(named: country.name.lowercased())
         cell.imageView?.layer.borderWidth = 1
         cell.imageView?.layer.borderColor = UIColor.lightGray.cgColor
         
