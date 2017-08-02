@@ -53,6 +53,10 @@ class BrowserViewController: UIViewController, WKNavigationDelegate {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isToolbarHidden = true
+    }
+    
 //    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
 //        let url = navigationAction.request.url
 //        

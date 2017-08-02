@@ -25,6 +25,7 @@ class Country: NSObject {
     var formattedPopulation: String
     var formattedArea: String
     var formattedDensity: String
+    var formattedWaterPercent: String
     var numberOfRows: Int
     
     init(name: String, capital: String, language: String, currency: String, gdp: Int, population: Int, area: Int, waterPercent: Float, timezone: String, drivesOn: String, wikiLink: String){
@@ -47,7 +48,7 @@ class Country: NSObject {
         self.formattedPopulation = numberFormatter.string(from: NSNumber(value: self.population))!
         self.formattedArea = numberFormatter.string(from: NSNumber(value: self.area))! + " km\u{00B2}"
         self.formattedDensity = numberFormatter.string(from: NSNumber(value: Double(self.population) / Double(self.area)))! + " /km\u{00B2}"
-        
+        self.formattedWaterPercent = String(self.waterPercent) + " %"
         self.numberOfRows = 11
     }
 

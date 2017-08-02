@@ -45,8 +45,8 @@ class DetailViewController: UITableViewController {
             cell.textLabel?.text = "Area:"
             cell.detailTextLabel?.text = selectedCountry.formattedArea
         case 6:
-            cell.textLabel?.text = "Water %:"
-            cell.detailTextLabel?.text = String(selectedCountry.waterPercent)
+            cell.textLabel?.text = "Water Percentage:"
+            cell.detailTextLabel?.text = selectedCountry.formattedWaterPercent
         case 7:
             cell.textLabel?.text = "Population Density:"
             cell.detailTextLabel?.text = selectedCountry.formattedDensity
