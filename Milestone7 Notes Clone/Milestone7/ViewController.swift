@@ -37,7 +37,7 @@ class ViewController: UITableViewController {
         readNotesFromFile()
     }
     
-    func hexStringToUIColor (hex:String) -> UIColor {
+    func hexStringToUIColor (hex:String, alpha: CGFloat? = 1.0) -> UIColor {
         var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
@@ -55,7 +55,7 @@ class ViewController: UITableViewController {
             red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
             green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
+            alpha: alpha!
         )
     }
     
@@ -114,6 +114,11 @@ class ViewController: UITableViewController {
             cell.textLabel?.text = note.body
             cell.detailTextLabel?.text = "\(dateString)  No additional text"
         }
+        
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = hexStringToUIColor(hex: "#FFCC33", alpha: 0.4)
+        cell.selectedBackgroundView = bgColorView
+        
         return cell
     }
     
