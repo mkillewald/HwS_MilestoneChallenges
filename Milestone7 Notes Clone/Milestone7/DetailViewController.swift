@@ -113,7 +113,7 @@ class DetailViewController: UIViewController, UINavigationControllerDelegate {
         
         //create new note
         let newNote = Note(body: "")
-        notes.append(newNote)
+        notes.insert(newNote, at: 0)
         
         // update selectedNote index
         selectedNote = notes.index(of: newNote)

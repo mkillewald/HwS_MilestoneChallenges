@@ -62,7 +62,7 @@ class ViewController: UITableViewController {
     func addNewNote() {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             let newNote = Note(body: "")
-            notes.append(newNote)
+            notes.insert(newNote, at: 0)
             vc.notes = notes
             vc.selectedNote = notes.index(of: newNote)
 
