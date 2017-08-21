@@ -43,7 +43,7 @@ class GameScene: SKScene {
         }
     }
     
-    var roundsLaunched = 0
+    var isGameOver = false
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background")
@@ -123,65 +123,67 @@ class GameScene: SKScene {
     func checkTouches(_ touches: Set<UITouch>) {
         guard let touch = touches.first else { return }
         
-        let location = touch.location(in: self)
-        let nodesAtPoint = nodes(at: location)
+        if !isGameOver {
+            let location = touch.location(in: self)
+            let nodesAtPoint = nodes(at: location)
 
-        var characterWasTapped = false
-        
-        for node in nodesAtPoint {
-            if node is SKSpriteNode {
-                if let name = node.name {
-                    characterWasTapped = true
-                    if badGuys.contains(name) {
-                        node.name = "hit"
-                        
-                        let fade = SKAction.fadeOut(withDuration: 0.25)
-                        let shrink = SKAction.scale(to: 0.0, duration: 0.25)
-                        let fadeShrink = SKAction.group([fade, shrink])
-                        node.run(fadeShrink)
-                        
-                        switch(Int(node.position.y)){
-                        case row1Pos:
-                            score += 25
-                        case row2Pos:
-                            score += 50
-                        case row3Pos:
-                            score += 100
-                        case alienPos:
-                            score += 500
-                        default:
-                            break
-                        }
-                    } else {
-                        if node.name == "hit" || node.name == "miss" { return }  // handles cases where multiple taps are registered
-                        
-                        node.name = "miss"
-                        let redX = SKSpriteNode(imageNamed: "X-icon")
-                        redX.zPosition = 400
-                        
-                        let redXFadeOut = SKAction.fadeOut(withDuration: 0.75)
-                        redX.run(redXFadeOut)
-                        
-                        node.addChild(redX)
-                        
-                        switch(Int(node.position.y)){
-                        case row1Pos:
-                            score -= 50
-                        case row2Pos:
-                            score -= 100
-                        case row3Pos:
-                            score -= 300
-                        default:
-                            break
+            var characterWasTapped = false
+            
+            for node in nodesAtPoint {
+                if node is SKSpriteNode {
+                    if let name = node.name {
+                        characterWasTapped = true
+                        if badGuys.contains(name) {
+                            node.name = "hit"
+                            
+                            let fade = SKAction.fadeOut(withDuration: 0.25)
+                            let shrink = SKAction.scale(to: 0.0, duration: 0.25)
+                            let fadeShrink = SKAction.group([fade, shrink])
+                            node.run(fadeShrink)
+                            
+                            switch(Int(node.position.y)){
+                            case row1Pos:
+                                score += 25
+                            case row2Pos:
+                                score += 50
+                            case row3Pos:
+                                score += 100
+                            case alienPos:
+                                score += 500
+                            default:
+                                break
+                            }
+                        } else {
+                            if node.name == "hit" || node.name == "miss" { return }  // handles cases where multiple taps are registered
+                            
+                            node.name = "miss"
+                            let redX = SKSpriteNode(imageNamed: "X-icon")
+                            redX.zPosition = 400
+                            
+                            let redXFadeOut = SKAction.fadeOut(withDuration: 0.75)
+                            redX.run(redXFadeOut)
+                            
+                            node.addChild(redX)
+                            
+                            switch(Int(node.position.y)){
+                            case row1Pos:
+                                score -= 50
+                            case row2Pos:
+                                score -= 100
+                            case row3Pos:
+                                score -= 300
+                            default:
+                                break
+                            }
                         }
                     }
                 }
             }
-        }
-        
-        // if touch was a miss, deduct points. needs way of debouncing multiple hits
-        if !characterWasTapped {
-            score -= 100
+            
+            // if touch was a miss, deduct points. needs way of debouncing multiple hits
+            if !characterWasTapped {
+                score -= 100
+            }
         }
     }
     
@@ -228,7 +230,7 @@ class GameScene: SKScene {
         target = randomTarget()
         let targetRow1 = SKSpriteNode(imageNamed: target)
         targetRow1.name = target
-        targetRow1.position = CGPoint(x: leftEdge, y: row1Pos)           // start offscreen at left edge
+        targetRow1.position = CGPoint(x: leftEdge, y: row1Pos)  // start offscreen at left edge
         targetRow1.zPosition = 300                              // keep sprite on top
         let moveRow1 = SKAction.moveTo(x: CGFloat(rightEdge), duration: 6.0)  // move left to right
         
@@ -236,9 +238,9 @@ class GameScene: SKScene {
         target = randomTarget()
         let targetRow2 = SKSpriteNode(imageNamed: target)
         targetRow2.name = target
-        targetRow2.position = CGPoint(x: rightEdge, y: row2Pos)          // start offscreen at right edge
-        targetRow2.xScale = -0.9                                // flip image on x and scale image 90%
-        targetRow2.yScale = 0.9                                 // scale image 90%
+        targetRow2.position = CGPoint(x: rightEdge, y: row2Pos) // start offscreen at right edge
+        targetRow2.xScale = -0.9                                // flip image on x and scale 90%
+        targetRow2.yScale = 0.9                                 // scale 90%
         targetRow2.zPosition = 300                              // keep sprite on top
         let moveRow2 = SKAction.moveTo(x: CGFloat(leftEdge), duration: 5.0)   // move right to left
         
@@ -246,9 +248,9 @@ class GameScene: SKScene {
         target = randomTarget()
         let targetRow3 = SKSpriteNode(imageNamed: target)
         targetRow3.name = target
-        targetRow3.position = CGPoint(x: leftEdge, y: row3Pos)           // start offscreen at left edge
-        targetRow3.xScale = 0.8                                 // scale image 80%
-        targetRow3.yScale = 0.8                                 // scale image 80%
+        targetRow3.position = CGPoint(x: leftEdge, y: row3Pos)  // start offscreen at left edge
+        targetRow3.xScale = 0.8                                 // scale 80%
+        targetRow3.yScale = 0.8                                 // scale 80%
         targetRow3.zPosition = 300                              // keep sprite on top
         let moveRow3 = SKAction.moveTo(x: CGFloat(rightEdge), duration: 4.5)  // move left to right
         
@@ -273,12 +275,12 @@ class GameScene: SKScene {
         case 0:
             alien.position = CGPoint(x: rightEdge, y: alienPos)
             moveAlien = SKAction.moveTo(x: CGFloat(leftEdge), duration: 1.5)  // move right to left
-            alien.xScale = -0.7                                               // flip on x and scale image 60%
+            alien.xScale = -0.7                                               // flip on x and scale 70%
             alien.name = "alienR2L"
         default:
             alien.position = CGPoint(x: leftEdge, y: alienPos)
             moveAlien = SKAction.moveTo(x: CGFloat(rightEdge), duration: 1.5)  // move left to right
-            alien.xScale = 0.7                                                 // flip on x and scale// flip on x and scale
+            alien.xScale = 0.7                                                 // scale 70%
             alien.name = "alienL2R"
         }
         
@@ -298,11 +300,12 @@ class GameScene: SKScene {
             alienTimer.invalidate()
             roundTimer.invalidate()
             
-            Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(gameOver), userInfo: nil, repeats: false)
         }
     }
     
     func gameOver() {
+        isGameOver = true
         let gameOver = SKSpriteNode(imageNamed: "gameOver")
         gameOver.position = CGPoint(x: 512, y: 384)
         gameOver.zPosition = 999
