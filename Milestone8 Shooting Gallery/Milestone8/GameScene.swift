@@ -36,7 +36,7 @@ extension AVAudioPlayer {
             dispatchDelay(delay: 0.1, closure: {
                 [weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.volume -= 0.01
+                strongSelf.volume -= 0.025
                 strongSelf.fadeOut(vol: vol)
             })
         } else {
@@ -48,7 +48,7 @@ extension AVAudioPlayer {
             dispatchDelay(delay: 0.1, closure: {
                 [weak self] in
                 guard let strongSelf = self else { return }
-                strongSelf.volume += 0.01
+                strongSelf.volume += 0.025
                 strongSelf.fadeIn(vol: vol)
             })
         } else {
@@ -128,7 +128,9 @@ class GameScene: SKScene {
                 // Use NSDataAsset's data property to access the audio file stored in Sound.
                 player = try AVAudioPlayer(data:asset.data, fileTypeHint: "mp3")
                 // Play the above sound file.
+                player?.volume = 0.0
                 player?.play()
+                player?.fadeIn(vol: 1.0)
             } catch let error as NSError {
                 print(error.localizedDescription)
             }
