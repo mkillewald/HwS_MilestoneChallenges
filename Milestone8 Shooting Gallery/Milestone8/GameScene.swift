@@ -5,9 +5,57 @@
 //  Created by Mike Killewald on 8/11/17.
 //  Copyright © 2017 Gameaholix. All rights reserved.
 //
+//  MUSIC: https://soundcloud.com/abel-vegas/i-am-so-fucking-synthwave-test-4 by Abel Vegas is licensed under
+//         a Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License (CC BY-NC-ND 3.0)
+//         https://creativecommons.org/licenses/by-nc-nd/3.0/
+//
+//  BACKGROUND IMAGE: http://natewren.com/rad-pack-80s-themed-hd-wallpapers/ by Nate Wren is licensed under
+//                    a Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)
+//                    https://creativecommons.org/licenses/by-nc/4.0/
+//
+//  GAME CHARACTERS: http://clipart.nicubunu.ro/?gallery=pacman by nicu@nicubunu.ro are licensed under
+//                   a Creative Commons Copyright-Only Dedication (based on United States law)
+//                   or Public Domain Certification https://creativecommons.org/licenses/publicdomain/
+//
+//  FONT: https://www.behance.net/gallery/24474623/Streamster-Typeface by Youssef Habchi (contact@youssef-habchi.com)
+//        Personal use only. For any commercial use, please email contact@youssef-habchi.com
+//
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
+
+func dispatchDelay(delay:Double, closure:@escaping ()->()) {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delay, execute: closure)
+}
+
+extension AVAudioPlayer {
+    func fadeOut(vol:Float) {
+        if volume > vol {
+            //print("vol is : \(vol) and volume is: \(volume)")
+            dispatchDelay(delay: 0.1, closure: {
+                [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.volume -= 0.01
+                strongSelf.fadeOut(vol: vol)
+            })
+        } else {
+            volume = vol
+        }
+    }
+    func fadeIn(vol:Float) {
+        if volume < vol {
+            dispatchDelay(delay: 0.1, closure: {
+                [weak self] in
+                guard let strongSelf = self else { return }
+                strongSelf.volume += 0.01
+                strongSelf.fadeIn(vol: vol)
+            })
+        } else {
+            volume = vol
+        }
+    }
+}
 
 class GameScene: SKScene {
 
@@ -25,6 +73,8 @@ class GameScene: SKScene {
     let row2Pos = 215
     let row3Pos = 310
     let alienPos = 680
+    
+    let fontFace = "Streamster"
     
     var gameScore: SKLabelNode!
     var score: Int = 0 {
@@ -45,6 +95,8 @@ class GameScene: SKScene {
     
     var isGameOver = false
     
+    var player: AVAudioPlayer?
+    
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background")
         background.position = CGPoint(x: 512, y: 384)
@@ -52,23 +104,35 @@ class GameScene: SKScene {
         background.zPosition = -1
         addChild(background)
         
-        gameScore = SKLabelNode(fontNamed: "Chalkduster")
+        gameScore = SKLabelNode(fontNamed: fontFace)
         gameScore.text = "Score: 0"
-        gameScore.position = CGPoint(x: 8, y: 722)
+        gameScore.position = CGPoint(x: 38, y: 722)
         gameScore.horizontalAlignmentMode = .left
-        gameScore.fontSize = 48
+        gameScore.fontSize = 36
         addChild(gameScore)
         
-        timeLeftLabel = SKLabelNode(fontNamed: "Chalkduster")
+        timeLeftLabel = SKLabelNode(fontNamed: fontFace)
         timeLeftLabel.text = "Time: 60"
-        timeLeftLabel.position = CGPoint(x: 750, y: 722)
+        timeLeftLabel.position = CGPoint(x: 830, y: 722)
         timeLeftLabel.horizontalAlignmentMode = .left
-        timeLeftLabel.fontSize = 48
+        timeLeftLabel.fontSize = 36
         addChild(timeLeftLabel)
         
-        // set a 3 second delay before starting the game after the game (app) is launched
-        Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(startGame), userInfo: nil, repeats: false)
+        // set a 5 second delay before starting the game after the game (app) is launched
+        Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(startGame), userInfo: nil, repeats: false)
         
+        // Fetch the Sound data set.
+        if let asset = NSDataAsset(name: "Abel Vegas - I Am So Fucking Synthwave") {
+            
+            do {
+                // Use NSDataAsset's data property to access the audio file stored in Sound.
+                player = try AVAudioPlayer(data:asset.data, fileTypeHint: "mp3")
+                // Play the above sound file.
+                player?.play()
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -305,11 +369,24 @@ class GameScene: SKScene {
     }
     
     func gameOver() {
+        player?.fadeOut(vol: 0.0)
         isGameOver = true
-        let gameOver = SKSpriteNode(imageNamed: "gameOver")
+        
+        let gameOver = SKLabelNode(fontNamed: fontFace)
+        gameOver.text = "Game Over"
         gameOver.position = CGPoint(x: 512, y: 384)
         gameOver.zPosition = 999
-        
+        gameOver.horizontalAlignmentMode = .center
+        gameOver.fontSize = 128
         addChild(gameOver)
+        
+        let songCredit = SKLabelNode(fontNamed: fontFace)
+        songCredit.text = "Track: I Am So Fucking Synthwave (Test 4) by Abel Vegas"
+        songCredit.position = CGPoint(x: 512, y: 15)
+        songCredit.zPosition = 999
+        songCredit.horizontalAlignmentMode = .center
+        songCredit.fontSize = 22
+        addChild(songCredit)
+
     }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D070C161F4C2BDC00C6A80B /* READ ME.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4D070C151F4C2BDC00C6A80B /* READ ME.txt */; };
+		4D070C171F4C2C2800C6A80B /* Streamster.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D070C141F4C2B9D00C6A80B /* Streamster.ttf */; };
 		4D21EAF81F3E126D00DF1BF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D21EAF71F3E126D00DF1BF1 /* AppDelegate.swift */; };
 		4D21EAFA1F3E126D00DF1BF1 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 4D21EAF91F3E126D00DF1BF1 /* GameScene.sks */; };
 		4D21EAFE1F3E126D00DF1BF1 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D21EAFD1F3E126D00DF1BF1 /* GameScene.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D070C141F4C2B9D00C6A80B /* Streamster.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Streamster.ttf; sourceTree = "<group>"; };
+		4D070C151F4C2BDC00C6A80B /* READ ME.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "READ ME.txt"; sourceTree = "<group>"; };
 		4D21EAF41F3E126D00DF1BF1 /* Milestone8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Milestone8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D21EAF71F3E126D00DF1BF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D21EAF91F3E126D00DF1BF1 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -39,6 +43,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D070C111F4C275C00C6A80B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4D070C181F4C320E00C6A80B /* Streamster */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		4D070C181F4C320E00C6A80B /* Streamster */ = {
+			isa = PBXGroup;
+			children = (
+				4D070C141F4C2B9D00C6A80B /* Streamster.ttf */,
+				4D070C151F4C2BDC00C6A80B /* READ ME.txt */,
+			);
+			name = Streamster;
+			sourceTree = "<group>";
+		};
 		4D21EAEB1F3E126D00DF1BF1 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +87,7 @@
 				4D21EB041F3E126D00DF1BF1 /* Assets.xcassets */,
 				4D21EB061F3E126D00DF1BF1 /* LaunchScreen.storyboard */,
 				4D21EB091F3E126D00DF1BF1 /* Info.plist */,
+				4D070C111F4C275C00C6A80B /* Fonts */,
 			);
 			path = Milestone8;
 			sourceTree = "<group>";
@@ -130,7 +152,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D070C171F4C2C2800C6A80B /* Streamster.ttf in Resources */,
 				4D21EB031F3E126D00DF1BF1 /* Main.storyboard in Resources */,
+				4D070C161F4C2BDC00C6A80B /* READ ME.txt in Resources */,
 				4D21EAFA1F3E126D00DF1BF1 /* GameScene.sks in Resources */,
 				4D21EB051F3E126D00DF1BF1 /* Assets.xcassets in Resources */,
 				4D21EB081F3E126D00DF1BF1 /* LaunchScreen.storyboard in Resources */,
