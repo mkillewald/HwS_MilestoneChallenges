@@ -65,6 +65,7 @@ class GameScene: SKScene {
     
     var targets = [SKNode]()
     
+    let rowTargets = ["borg", "cowboy", "geek", "geisha", "girl", "nurse", "ninja", "princess", "candy", "pirate"]
     let badGuys = ["alienR2L", "alienL2R", "borg", "cowboy", "geek", "ninja", "pirate"]
     
     let leftEdge = -50
@@ -118,7 +119,7 @@ class GameScene: SKScene {
         timeLeftLabel.fontSize = 36
         addChild(timeLeftLabel)
         
-        // set a 5 second delay before starting the game after the game (app) is launched
+        // set a delay before starting the game after the game (app) is launched
         Timer.scheduledTimer(timeInterval: 6, target: self, selector: #selector(startGame), userInfo: nil, repeats: false)
         
         // Fetch the Sound data set.
@@ -260,33 +261,7 @@ class GameScene: SKScene {
     }
     
     func randomTarget() -> String {
-        let target: String
-        let randomInt = GKRandomSource.sharedRandom().nextInt(upperBound: 10)  // generates random integer from 0-9
-    
-        switch(randomInt) {
-        case 0:
-            target = "borg"
-        case 1:
-            target = "cowboy"
-        case 2:
-            target = "geek"
-        case 3:
-            target = "geisha"
-        case 4:
-            target = "girl"
-        case 5:
-            target = "nurse"
-        case 6:
-            target = "ninja"
-        case 7:
-            target = "princess"
-        case 8:
-            target = "candy"
-        default:
-            target = "pirate" // will be used when randomInt = 9
-        }
-        
-        return target
+        return GKRandomSource.sharedRandom().arrayByShufflingObjects(in: rowTargets).first as! String
     }
     
     func launchRowTargets() {
