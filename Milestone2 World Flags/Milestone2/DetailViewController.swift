@@ -11,12 +11,13 @@ import UIKit
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
-    var selectedImage: String?
+    var selectedImageTitle: String?
+    var selectedImage: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let imageToLoad = selectedImage {
+        if let imageToLoad = selectedImageTitle {
             
             if imageToLoad.characters.count < 3 {
                 title = imageToLoad.uppercased()
@@ -26,7 +27,7 @@ class DetailViewController: UIViewController {
             
             navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
             
-            imageView.image = UIImage(named: imageToLoad)
+            imageView.image = selectedImage //UIImage(named: imageToLoad)
         }
     }
 
