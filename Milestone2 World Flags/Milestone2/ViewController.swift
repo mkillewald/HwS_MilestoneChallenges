@@ -51,9 +51,9 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
-            vc.selectedImageTitle = countries[indexPath.row]
-            
             let cell = tableView.cellForRow(at: indexPath)
+
+            vc.countryName = cell?.textLabel?.text //countries[indexPath.row
             vc.selectedImage = cell?.imageView?.image
             
             navigationController?.pushViewController(vc, animated: true)

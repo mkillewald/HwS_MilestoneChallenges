@@ -7,38 +7,27 @@
 //
 
 import UIKit
-//import Social
 
 class DetailViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
-    var selectedImageTitle: String?
+    var countryName: String!
     var selectedImage: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = countryName
         
-        if let imageToLoad = selectedImageTitle {
-            
-            if imageToLoad.characters.count < 3 {
-                title = imageToLoad.uppercased()
-            } else {
-                title = imageToLoad.capitalized
-            }
-            
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
-            
-            imageView.image = selectedImage //UIImage(named: imageToLoad)
-        }
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
+        
+        imageView.image = selectedImage
     }
 
     func shareTapped() {
-        var countryName = title!
-            
         if countryName.characters.count < 3 {
             countryName = "the " + countryName
         }
 
-        let initialText = "Some info about \(countryName) \n\n"
+        let initialText = "Some info about \(countryName!) \n\n"
         let url = URL(string: "https://www.google.com/search?q=\(title!.lowercased())")
         
         let vc = UIActivityViewController(activityItems: [imageView.image!, initialText, url!], applicationActivities: [])
