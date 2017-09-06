@@ -194,18 +194,18 @@ class ViewController: UIViewController {
     func drawRainbow() {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
         let colors = [UIColor.red, UIColor.brown, UIColor.orange, UIColor.yellow, UIColor.green, UIColor.blue, UIColor.purple, UIColor.gray, UIColor.darkGray, UIColor.black]
-        
+    
         let img = renderer.image { ctx in
             // awesome drawing code
-            let lineWidth = 20
-            ctx.cgContext.setLineWidth(CGFloat(lineWidth))
+            let lineWidth: CGFloat = 20
+            ctx.cgContext.setLineWidth(lineWidth)
+            ctx.cgContext.translateBy(x: 0, y: 256)
             
             for i in 0 ..< colors.count {
-                let spacer = lineWidth / 2 + i * lineWidth
-                let diameter = 512 - spacer * 2
-                let rectangle = CGRect(x: spacer, y: 256 + spacer, width: diameter, height: diameter)
+                let inset: CGFloat = lineWidth / 2 + CGFloat(i) * lineWidth
+                let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
                 ctx.cgContext.setStrokeColor(colors[i].cgColor)
-                ctx.cgContext.addEllipse(in: rectangle)
+                ctx.cgContext.addEllipse(in: rectangle.insetBy(dx: inset, dy: inset))
                 ctx.cgContext.drawPath(using: .stroke)
             }
         }
