@@ -193,12 +193,12 @@ class ViewController: UIViewController {
     
     func drawRainbow() {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512))
-        let colors = [UIColor.red, UIColor.brown, UIColor.orange, UIColor.yellow, UIColor.green, UIColor.blue, UIColor.purple, UIColor.gray, UIColor.darkGray, UIColor.black]
-    
+        
         let img = renderer.image { ctx in
             // awesome drawing code
             let lineWidth: CGFloat = 20
             let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
+            let colors = [UIColor.red, UIColor.brown, UIColor.orange, UIColor.yellow, UIColor.green, UIColor.blue, UIColor.purple, UIColor.gray, UIColor.darkGray, UIColor.black]
             
             ctx.cgContext.setLineWidth(lineWidth)
             ctx.cgContext.translateBy(x: 0, y: 256)
