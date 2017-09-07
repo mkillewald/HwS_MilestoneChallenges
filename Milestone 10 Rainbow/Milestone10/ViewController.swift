@@ -198,12 +198,13 @@ class ViewController: UIViewController {
         let img = renderer.image { ctx in
             // awesome drawing code
             let lineWidth: CGFloat = 20
+            let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
+            
             ctx.cgContext.setLineWidth(lineWidth)
             ctx.cgContext.translateBy(x: 0, y: 256)
             
             for i in 0 ..< colors.count {
                 let inset: CGFloat = lineWidth / 2 + CGFloat(i) * lineWidth
-                let rectangle = CGRect(x: 0, y: 0, width: 512, height: 512)
                 ctx.cgContext.setStrokeColor(colors[i].cgColor)
                 ctx.cgContext.addEllipse(in: rectangle.insetBy(dx: inset, dy: inset))
                 ctx.cgContext.drawPath(using: .stroke)
