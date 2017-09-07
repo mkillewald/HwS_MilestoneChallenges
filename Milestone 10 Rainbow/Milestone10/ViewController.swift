@@ -203,9 +203,9 @@ class ViewController: UIViewController {
             ctx.cgContext.setLineWidth(lineWidth)
             ctx.cgContext.translateBy(x: 0, y: 256)
             
-            for i in 0 ..< colors.count {
+            for (i, color) in colors.enumerated() {
                 let inset: CGFloat = lineWidth / 2 + CGFloat(i) * lineWidth
-                ctx.cgContext.setStrokeColor(colors[i].cgColor)
+                ctx.cgContext.setStrokeColor(color.cgColor)
                 ctx.cgContext.addEllipse(in: rectangle.insetBy(dx: inset, dy: inset))
                 ctx.cgContext.drawPath(using: .stroke)
             }
