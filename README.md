@@ -59,6 +59,9 @@ Note: the official Apple Notes app supports rich text input and media; don’t w
 
 Make a shooting gallery game using SpriteKit: create three rows on the screen, then have targets slide across from one side to the other. If the user taps a target, make it fade out and award them points.
 
+[![Alt text](https://img.youtube.com/vi/XI4UHNzxl8Q/0.jpg)](https://www.youtube.com/watch?v=XI4UHNzxl8Q)   
+click the above image to watch video
+
 ### Milestone 9: Swift Extensions
 
 Implement five Swift language extensions 
